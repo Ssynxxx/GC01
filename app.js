@@ -11,7 +11,7 @@ app.use(require('./routes'));
 app.use(errorHandler);
 
 // server hanya listen jika file dijalankan langsung (node app.js); supertest cukup import app
-if (require.main === module) {
+if (process.env.NODE_ENV !== 'test') {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }
